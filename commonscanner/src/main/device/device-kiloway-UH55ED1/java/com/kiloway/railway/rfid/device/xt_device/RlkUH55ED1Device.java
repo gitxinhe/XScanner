@@ -77,6 +77,9 @@ public class RlkUH55ED1Device extends Device {
         return false;
     }
     void start(boolean isAnyInventory){
+        if (mReader==null){
+            return;
+        }
         this.isAnyInventory = isAnyInventory;
         if (isAnyInventory){
            if (mReader.inventoryStart()){
@@ -182,11 +185,14 @@ public class RlkUH55ED1Device extends Device {
 
     @Override
     public int getPower() {
-       return mReader.getPower();
+       return mReader==null?0:mReader.getPower();
     }
 
     @Override
     public boolean setPower(int power) {
+        if (mReader==null){
+            return false;
+        }
         boolean success =  mReader.setPower(power);
         if (success){
             DeviceSetting.setPower(this.context,Constant.KLWUH55ED1_POWER,power);
@@ -205,12 +211,18 @@ public class RlkUH55ED1Device extends Device {
 
     @Override
     public boolean readFilterData(String epc) {
+        if (mReader==null){
+            return false;
+        }
         return mReader.readTagData(BaseUtil.getHexByteArray(epc), BaseUtil.getHexByteArray("00000000"),
                 IReader.Bank_RESERVED, 8, 1, new byte[128]);
     }
 
     @Override
     public boolean readData() {
+        if (mReader==null){
+            return false;
+        }
         return mReader.readTagData(new byte[128], BaseUtil.getHexByteArray("00000000"),IReader.Bank_RESERVED,8,1,null);
     }
 

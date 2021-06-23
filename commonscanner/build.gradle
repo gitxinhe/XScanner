@@ -1,0 +1,72 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.github.dcendents.android-maven'
+group='com.github.gitxinhe'
+android {
+    compileSdkVersion 26
+    buildToolsVersion "26.0.3"
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    sourceSets{
+        main{
+            java.srcDirs += "src/main/device/device-kiloway-K5000/java/"
+            java.srcDirs += "src/main/device/device-kiloway-K5000/module/"
+            jniLibs.srcDirs +="src/main/device/device-kiloway-K5000/jniLibs/"
+
+            java.srcDirs += "src/main/device/device-kiloway-K5001/java/"
+            java.srcDirs += "src/main/device/device-kiloway-K5001/module/"
+            jniLibs.srcDirs +="src/main/device/device-kiloway-K5001/jniLibs/"
+
+            java.srcDirs += "src/main/device/device-kiloway-C72/java/"
+            java.srcDirs += "src/main/device/device-kiloway-C72/module/"
+            jniLibs.srcDirs +="src/main/device/device-kiloway-C72/jniLibs/"
+
+            java.srcDirs += "src/main/device/device-kiloway-UH55ED1/java/"
+            java.srcDirs += "src/main/device/device-kiloway-UH55ED1/module/"
+            jniLibs.srcDirs +="src/main/device/device-kiloway-UH55ED1/jniLibs/"
+
+            java.srcDirs += "src/main/device/device-kiloway-UHK71V164BSP/java/"
+            java.srcDirs += "src/main/device/device-kiloway-UHK71V164BSP/module/"
+            jniLibs.srcDirs +="src/main/device/device-kiloway-UHK71V164BSP/jniLibs/"
+
+            java.srcDirs += "src/main/device/device-kiloway-UHK71V164BSP_B/java/"
+            java.srcDirs += "src/main/device/device-kiloway-UHK71V164BSP_B/module/"
+            jniLibs.srcDirs +="src/main/device/device-kiloway-UHK71V164BSP_B/jniLibs/"
+        }
+    }
+}
+
+dependencies {
+    compile files('src/main/device/device-kiloway-K5001/libs/Module_Android_Power.jar')
+    compile files('src/main/device/device-kiloway-K5001/libs/SenterOpenApi_IoT_1.2.3.95_Common.jar')
+    compile files('src/main/device/device-kiloway-K5001/libs/SenterOpenApi_IoT_1.2.3.95_Function_UltraHighFrequency_ModelI.jar')
+    compile files('src/main/device/device-kiloway-UH55ED1/libs/uhfUH55ED1.jar')
+    androidTestCompile 'junit:junit:4.12'
+    compile files('src/main/device/device-kiloway-K5000/libs/uhfcom13_v15.jar')
+    compile files('src/main/device/device-kiloway-K5000/libs/SerialPort.jar')
+    compile files('libs/commons-lang3-3.1.jar')
+    compile files('src/main/device/device-kiloway-UHK71V164BSP/libs/SerialPort.jar')
+    compile files('src/main/device/device-kiloway-UHK71V164BSP_B/libs/uhfr_v1.8.jar')
+    compile files('src/main/device/device-kiloway-UHK71V164BSP_B/libs/SerialPort.jar')
+    compile files('src/main/device/device-kiloway-UHK71V164BSP_B/libs/jxl.jar')
+    compile files('src/main/device/device-kiloway-UHK71V164BSP_B/libs/ModuleAPI_J.jar')
+    compile files('src/main/device/device-kiloway-C72/libs/cw-deviceapi20191022.jar')
+}

@@ -102,7 +102,9 @@ public class RlkUH55ED1Device extends Device {
     public void stopReading() {
         startFlag = false;
         setReadMode(startFlag);
-        mReader.inventoryStop();
+        if (mReader!=null){
+            mReader.inventoryStop();
+        }
     }
 
     public void setReader(UHFService reader) {

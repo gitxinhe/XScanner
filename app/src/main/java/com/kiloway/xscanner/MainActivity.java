@@ -9,6 +9,7 @@ import android.util.Log;
 import com.kiloway.commonscanner.base.AllDevice;
 import com.kiloway.commonscanner.base.Constant;
 import com.kiloway.commonscanner.base.Device;
+import com.kiloway.commonscanner.base.DeviceSetting;
 import com.kiloway.commonscanner.model.EpcInfo;
 
 import java.util.List;
@@ -19,6 +20,8 @@ public class MainActivity extends AppCompatActivity implements Device.OnEventLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //AllDevice.setDefaultDevice(this,Constant.KLWUH55EH2);
+        DeviceSetting.setCurrentReader(this,Constant.KLWUH55EH2);
         reader = AllDevice.initUHF(this);
         reader.init(this);
         reader.inventoryAnyTag();

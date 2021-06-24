@@ -61,6 +61,9 @@ public class AllDevice {
     public static Device initUHF(Context context) {
         return  getDevice(DeviceSetting.getDevice(context));
     }
+    public static void setDefaultDevice(Context context,String deviceName) {
+        DeviceSetting.setCurrentReader(context,deviceName);
+    }
     public static void needValidateKlwLabel(Context context,boolean needValidate){
         DeviceSetting.setNeedValidateKlwLabel(context,needValidate);
     }
